@@ -6,7 +6,7 @@ This is a project to classify five levels of clinical dementia rating using MRI,
 ### Option 1: by running commands
 1. Create a new conda or docker environment with python 3.7.
 2. Activate the environment.
-3. Run the commands listed in `requirements.txt`.
+3. Run the commands listed in [`requirements.txt`](https://github.com/binfnstats/CDR-Classification/blob/master/requirements.txt).
 
 ### Option 2: by building identical conda environment
 Run the command
@@ -36,8 +36,8 @@ Be sure to replace, `MODEL_PATH` with the path of the model (`.h5` file) you jus
 Note that loading a model requires a few seconds. However the actual time to predict is usually less than a second when a GPU is used.
 
 ### Option 2: Use python
-1. Copy the encoder.py file in your project which can transform between one hot encoded CDR to normal CDR scale.
-2. Copy the code in `predict.py` and paste it in your code.
+1. Copy the [`encoder.py`](https://github.com/binfnstats/CDR-Classification/blob/master/encoder.py) file in your project which can transform between one hot encoded CDR to normal CDR scale.
+2. Copy the code in [`predict.py`](https://github.com/binfnstats/CDR-Classification/blob/master/predict.py) and paste it in your code.
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
