@@ -29,15 +29,18 @@ for layer in model.layers[::-1]:
         break
 grad_model = tf.keras.models.Model(model.inputs, [model.get_layer(last_layer).output, model.output])
 
-# Load input and output
+# Load inputs
 img = nib.load(img_path).get_fdata()
 img = img.reshape(img.shape[0], img.shape[1], img.shape[2], 1)
 inp = {'img_input': img, 'age_input': age_year, 'gender_input': sex}
-label = enc.encode_label(label)
 
 # Perform gradcam
 with tf.GradientTape() as tape:
     conv_outputs, predictions = grad_model(inp)
+    if label == -1:
+        label = predictions.numpy()
+    else:
+        label = enc.encode_label(label)
     loss = predictions[:, np.argwhere(label == 1)[0][0]]
 output = conv_outputs[0]
 grads = tape.gradient(loss, conv_outputs)[0]

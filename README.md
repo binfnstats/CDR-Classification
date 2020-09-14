@@ -53,7 +53,7 @@ The following command does two things. (a) Predict CDR from MRI, age, and sex. (
 ```
 python gradcam.py MODEL_PATH IMAGE_PATH AGE SEX CDR OUTPUT_PATH
 ```
-Be sure to replace, `MODEL_PATH` with the path of the model (`.h5` file) you just downloaded, `IMAGE_PATH` with the `.nii` or `.nii.gz` (MRI) file, `AGE` with subject's age in years, `SEX` with `0` (male) or `1` (female), `CDR` with class label to generate Grad-CAM for, `OUTPUT_PATH` with the directory where the generated three dimensional heatmap should be saved. The command will also output the subject's CDR in the form of one of five numbers: 0, 0.5, 1, 2, or 3.
+Be sure to replace, `MODEL_PATH` with the path of the model (`.h5` file) you just downloaded, `IMAGE_PATH` with the `.nii` or `.nii.gz` (MRI) file, `AGE` with subject's age in years, `SEX` with `0` (male) or `1` (female), `CDR` with class label to generate Grad-CAM for, `OUTPUT_PATH` with the directory where the generated three dimensional heatmap should be saved. The command will also output the subject's CDR in the form of one of five numbers: 0, 0.5, 1, 2, or 3. For `CDR` argument, you can use `-1` to produce Grad-CAM for the predicted class.
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
