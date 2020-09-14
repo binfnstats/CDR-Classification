@@ -1,0 +1,6 @@
+conda install -c conda-forge jupyterlab ipywidgets xnat tqdm pandas matplotlib tpot xgboost dask dask-ml scikit-mdr skrebate scikit-image opencv shap xlrd openpyxl scikit-learn seaborn graphviz pydotplus jupyterlab-git -y
+conda install nodejs -y
+
+# Add support for tqdm in notebook
+yes | pip install nibabel tensorflow-addons nilearn pyyaml h5py
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
