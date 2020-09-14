@@ -7,6 +7,8 @@ This is a project to classify five levels of clinical dementia rating using MRI,
 1. Create a new conda or docker environment with python 3.7.
 2. Activate the environment.
 3. Run the commands listed in [`requirements.txt`](https://github.com/binfnstats/CDR-Classification/blob/master/requirements.txt).
+4. Install [niftyreg](https://github.com/KCL-BMEIS/niftyreg/wiki/install).
+5. Download the [standard MNI space MRI](http://www.bic.mni.mcgill.ca/~vfonov/icbm/2009/mni_icbm152_nlin_sym_09c_nifti.zip).
 
 ### Option 2: by building identical conda environment
 Run the command
@@ -25,6 +27,13 @@ python train.py LOGDIR
 Be sure to replace `LOGDIR` with the path of your log directory where tensorboard history and model will be saved.
 
 ## Use our trained model to predict CDR
+1. Register your mri image into standard MNI space [ICBM 2009c Nonlinear Symmetric MNI space](https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009).
+    ```
+    reg_aladin -flo PATH_TO_YOUR_MRI -ref PATH_TO_MNI_FILE -res OUTPUT_MRI_PATH
+    ```
+    Be sure to replace `PATH_TO_YOUR_MRI` with the path to your MRI file, `PATH_TO_MNI_FILE` path to the MNI file you downloaded, and `OUTPUT_MRI_PATH` location where the registered MRI should be saved.
+2. To classify the MRI, follow one of the following two options.
+
 ### Option 1: Use command line
 1. Download the model from [TODO AddPLACEHOLDER].
 2. To predict CDR from MRI, age, and sex, run the command:
