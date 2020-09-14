@@ -32,11 +32,11 @@ Be sure to replace `LOGDIR` with the path of your log directory where tensorboar
     reg_aladin -flo PATH_TO_YOUR_MRI -ref PATH_TO_MNI_FILE -res OUTPUT_MRI_PATH
     ```
     Be sure to replace `PATH_TO_YOUR_MRI` with the path to your MRI file, `PATH_TO_MNI_FILE` path to the MNI file you downloaded, and `OUTPUT_MRI_PATH` location where the registered MRI should be saved.
-2. To classify the MRI, follow one of the following two options.
+2. Download the model from [TODO AddPLACEHOLDER].
+3. To classify the MRI, follow one of the following two options.
 
 ### Option 1: Use command line
-1. Download the model from [TODO AddPLACEHOLDER].
-2. To predict CDR from MRI, age, and sex, run the command:
+To predict CDR from MRI, age, and sex, run the command:
 ```
 python predict.py MODEL_PATH IMAGE_PATH AGE SEX
 ```
@@ -47,6 +47,13 @@ Note that loading a model requires a few seconds. However the actual time to pre
 ### Option 2: Use python
 1. Copy the [`encoder.py`](https://github.com/binfnstats/CDR-Classification/blob/master/encoder.py) file in your project which can transform between one hot encoded CDR to normal CDR scale.
 2. Copy the code in [`predict.py`](https://github.com/binfnstats/CDR-Classification/blob/master/predict.py) and paste it in your code.
+
+### Get Grad-CAM visualization
+The following command does two things. (a) Predict CDR from MRI, age, and sex. (b) Generates and saves the gradcam heatmap.
+```
+python gradcam.py MODEL_PATH IMAGE_PATH AGE SEX CDR OUTPUT_PATH
+```
+Be sure to replace, `MODEL_PATH` with the path of the model (`.h5` file) you just downloaded, `IMAGE_PATH` with the `.nii` or `.nii.gz` (MRI) file, `AGE` with subject's age in years, `SEX` with `0` (male) or `1` (female), `CDR` with class label to generate Grad-CAM for, `OUTPUT_PATH` with the directory where the generated three dimensional heatmap should be saved. The command will also output the subject's CDR in the form of one of five numbers: 0, 0.5, 1, 2, or 3.
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
