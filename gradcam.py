@@ -31,6 +31,10 @@ grad_model = tf.keras.models.Model(model.inputs, [model.get_layer(last_layer).ou
 
 # Load inputs
 img = nib.load(img_path).get_fdata()
+unq = np.unique(img)
+mx = np.max(unq)
+mn = np.min(unq)
+img = (img - mn) / (mx - mn)
 img = img.reshape(img.shape[0], img.shape[1], img.shape[2], 1)
 inp = {'img_input': img, 'age_input': age_year, 'gender_input': sex}
 
